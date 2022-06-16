@@ -31,15 +31,15 @@ body:
       label: Which mod are you having an issue with?
       description: You may select more than one.
       options:
-        - pyalienlife
-        - pyalternativeenergy
-        - pycoalprocessing
-        - pyfusionenergy
-        - pyhightech
-        - pyindustry
-        - pypetroleumhandling
-        - pypostprocessing
-        - pyrawores
+        - label: pyalienlife
+        - label: pyalternativeenergy
+        - label: pycoalprocessing
+        - label: pyfusionenergy
+        - label: pyhightech
+        - label: pyindustry
+        - label: pypetroleumhandling
+        - label: pypostprocessing
+        - label: pyrawores
   - type: dropdown
     attributes:
       label: Operating system
@@ -51,7 +51,7 @@ body:
         - label: < Windows 10
         - label: MacOS
         - label: GNU/Linux
-      validations:
+    validations:
         required: true
   - type: checkboxes
     id: issuetype
@@ -59,12 +59,12 @@ body:
       label: What kind of issue is this?
       description: You may select more than one.
       options:
-        - Compatibility
-        - Locale (names, descriptions, unknown keys)
-        - Crash
-        - Progression
-        - Balance
-        - Other
+        - label: Compatibility
+        - label: Locale (names, descriptions, unknown keys)
+        - label: Crash
+        - label: Progression
+        - label: Balance
+        - label: Other
   - type: textarea
     attributes:
       label: What is the problem?
