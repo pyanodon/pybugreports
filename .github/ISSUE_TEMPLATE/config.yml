@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: "https://github.com/pyanodon/pybugreports/discussions"
+    about: "Unsure if it's an issue, or just have a question? Ask in discussions first."
+
+  - name: Question
+    url: "https://discord.gg/PtDdRtYZrx"
+    about: "Alternatively, ask on our discord"
