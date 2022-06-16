@@ -6,16 +6,15 @@ body:
     attributes:
       value: |
         #### PLEASE NOTE
-        "We do not support isssues related to running versions from GitHub mixed with versions from the Factorio mod portal."
+        We do not support isssues related to running versions from GitHub mixed with versions from the Factorio mod portal.
 
-        "Please post all details in **English**."
+        Please post all details in **English**.
 
         #### Prerequisites before submitting an issue!
         - Check the **[frequent/common issues list](https://github.com/pyanodon/pybugreports/issues/1)** and perform a **[search of submitted issues (including closed ones)](https://github.com/search?q=user%3Apyanodon&type=issues)** to avoid posting a duplicate.
         - Make sure this is not a support request or question, both of which are better suited for either the **[discussions section](https://github.com/pyanodon/pybugreports/discussions)** or **[discord](https://discord.gg/PtDdRtYZrx)**.
         - Verify that you can reproduce the issue with the **absolute minimum set of mods** (including any required to cause the issue, but no more).
-        - **Always include the factorio-current.log file**. Additionally, if relevant to issue/when asked, please provide a savegame & screenshots.
-        
+        - **Always** include the factorio-current.log file. Additionally, if relevant to issue/when asked, please provide a savegame & screenshots.
   - type: dropdown
     attributes:
       label: Source
@@ -41,7 +40,7 @@ body:
         - pypetroleumhandling
         - pypostprocessing
         - pyrawores
-   - type: dropdown
+  - type: dropdown
     attributes:
       label: Operating system
       description: Which operating system are you running the game on?
