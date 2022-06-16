@@ -29,7 +29,7 @@ body:
     id: issuemod
     attributes:
       label: Which mod are you having an issue with?
-      multiple: true
+      description: You may select more than one.
       options:
         - pyalienlife
         - pyalternativeenergy
@@ -57,7 +57,7 @@ body:
     id: issuetype
     attributes:
       label: What kind of issue is this?
-      multiple: true
+      description: You may select more than one.
       options:
         - Compatibility
         - Locale (names, descriptions, unknown keys)
