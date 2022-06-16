@@ -24,7 +24,9 @@ body:
         - Factorio Mod Portal
         - Github
         - Mixed GitHub and Factorio Mod Portal
-        - Other      
+        - Other
+    validations:
+        required: true
   - type: checkboxes
     id: issuemod
     attributes:
