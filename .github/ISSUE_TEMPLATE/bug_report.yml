@@ -61,9 +61,11 @@ body:
       options:
         - label: Compatibility
         - label: Locale (names, descriptions, unknown keys)
+        - label: Graphical
         - label: Crash
         - label: Progression
         - label: Balance
+        - label: Pypostprocessing failure
         - label: Other
   - type: textarea
     attributes:
