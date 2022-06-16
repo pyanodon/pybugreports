@@ -1,0 +1,97 @@
+name: Bug Report
+description: File a bug report to help improve Pyanodon mods.
+labels: ["triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        #### PLEASE NOTE
+        "We do not support isssues related to running versions from GitHub mixed with versions from the Factorio mod portal."
+
+        "Please post all details in **English**."
+
+        #### Prerequisites before submitting an issue!
+        - Check the **[frequent/common issues list](https://github.com/pyanodon/pybugreports/issues/1)** and perform a **[search of submitted issues (including closed ones)](https://github.com/search?q=user%3Apyanodon&type=issues)** to avoid posting a duplicate.
+        - Make sure this is not a support request or question, both of which are better suited for either the **[discussions section](https://github.com/pyanodon/pybugreports/discussions)** or **[discord](https://discord.gg/PtDdRtYZrx)**.
+        - Verify that you can reproduce the issue with the **absolute minimum set of mods** (including any required to cause the issue, but no more).
+        - **Always include the factorio-current.log file**. Additionally, if relevant to issue/when asked, please provide a savegame & screenshots.
+        
+  - type: dropdown
+    attributes:
+      label: Source
+      description: Where did you acquire the py mods you are having issues with?
+      multiple: false
+      options:
+        - label: Factorio Mod Portal
+        - label: Github
+        - label: Mixed GitHub and Factorio Mod Portal
+        - label: Other      
+  - type: checkboxes
+    id: issuemod
+    attributes:
+      label: Which mod are you having an issue with?
+      multiple: true
+      options:
+        - pyalienlife
+        - pyalternativeenergy
+        - pycoalprocessing
+        - pyfusionenergy
+        - pyhightech
+        - pyindustry
+        - pypetroleumhandling
+        - pypostprocessing
+        - pyrawores
+   - type: dropdown
+    attributes:
+      label: Operating system
+      description: Which operating system are you running the game on?
+      multiple: false
+      options:
+        - label: Windows 10+
+        - label: Windows 10+ w/ case sensitive filesystem enabled
+        - label: < Windows 10
+        - label: MacOS
+        - label: GNU/Linux
+      validations:
+        required: true
+  - type: checkboxes
+    id: issuetype
+    attributes:
+      label: What kind of issue is this?
+      multiple: true
+      options:
+        - Compatibility
+        - Locale (names, descriptions, unknown keys)
+        - Crash
+        - Progression
+        - Balance
+        - Other
+  - type: textarea
+    attributes:
+      label: What is the problem?
+      description: Please give a clear and concise description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Please provide reliable steps to reproduce the problem.
+      placeholder: |
+        1. First step
+        2. Second step
+        3. and so on...
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add screenshots etc. (Anything that will provide more context about the problem)
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Log file
+      description: |
+        Add this file: factorio-current.log. It can be found at %APPDATA%\Factorio\factorio-current.log on most Windows installations, or in the Factorio game folder.
+    validations:
+      required: false
