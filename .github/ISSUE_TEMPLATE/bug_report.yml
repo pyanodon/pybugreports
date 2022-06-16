@@ -17,14 +17,14 @@ body:
         - **Always** include the factorio-current.log file. Additionally, if relevant to issue/when asked, please provide a savegame & screenshots.
   - type: dropdown
     attributes:
-      label: Source
+      label: Mod source
       description: Where did you acquire the py mods you are having issues with?
       multiple: false
       options:
-        - label: Factorio Mod Portal
-        - label: Github
-        - label: Mixed GitHub and Factorio Mod Portal
-        - label: Other      
+        - Factorio Mod Portal
+        - Github
+        - Mixed GitHub and Factorio Mod Portal
+        - Other      
   - type: checkboxes
     id: issuemod
     attributes:
@@ -46,11 +46,11 @@ body:
       description: Which operating system are you running the game on?
       multiple: false
       options:
-        - label: Windows 10+
-        - label: Windows 10+ w/ case sensitive filesystem enabled
-        - label: < Windows 10
-        - label: MacOS
-        - label: GNU/Linux
+        - \>=Windows 10
+        - \>=Windows 10 w/ case sensitive filesystem enabled
+        - < Windows 10
+        - MacOS
+        - GNU/Linux
     validations:
         required: true
   - type: checkboxes
