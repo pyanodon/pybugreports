@@ -24,6 +24,8 @@ body:
         - Factorio Mod Portal
         - Github
         - Mixed GitHub and Factorio Mod Portal
+        - PyAE Alpha
+        - PyAE Beta
         - Other
     validations:
         required: true
