@@ -1,4 +1,4 @@
 # Pyanodon Mods Bug Reports
-This is the central bug reports repository for Pyanodon mods. Select [issues](https://github.com/pyanodon/pybugreports/issues) from the top to get started.
-
-If you have a question, an issue you aren't sure is an issue, or any other feedback, consider using the [discussion](https://github.com/pyanodon/pybugreports/discussions) section instead of filing a bug report.
+This is the repository for bug reports and other feedback about the Pyanodon mods. 
+* To report a bug, please navigate to the [Issues](https://github.com/pyanodon/pybugreports/issues) section.
+* If it's not a bug, then please consider using [Discussions](https://github.com/pyanodon/pybugreports/discussions) instead. The Discussions section is fitting for questions, issues that you're not sure about, suggestions, or any other feedback.
