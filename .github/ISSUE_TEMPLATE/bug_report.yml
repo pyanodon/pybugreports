@@ -29,21 +29,6 @@ body:
         - Other
     validations:
         required: true
-  - type: checkboxes
-    id: issuemod
-    attributes:
-      label: Which mod are you having an issue with?
-      description: You may select more than one.
-      options:
-        - label: pyalienlife
-        - label: pyalternativeenergy
-        - label: pycoalprocessing
-        - label: pyfusionenergy
-        - label: pyhightech
-        - label: pyindustry
-        - label: pypetroleumhandling
-        - label: pypostprocessing
-        - label: pyrawores
   - type: dropdown
     attributes:
       label: Operating system
