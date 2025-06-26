@@ -1,0 +1,118 @@
+name: Sync "has pull request" label
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      LABEL: has pull request
+
+    steps:
+      - name: Run label sync
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.CROSS_REPO_PAT || github.token }}
+          script: |
+            const { owner, repo } = context.repo;
+            const labelName = process.env.LABEL;
+
+            console.log(`🔍 Starting sync for ${owner}/${repo}`);
+            console.log(`Label to apply: "${labelName}"`);
+
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              { owner, repo, state: "open", per_page: 100 }
+            );
+
+            console.log(`📦 Found ${issues.length} open issues.`);
+
+            for (const issue of issues) {
+              if (issue.pull_request) {
+                console.log(`⏭️ Skipping pull request #${issue.number}`);
+                continue;
+              }
+
+              const issueNumber = issue.number;
+              const issueURL = issue.html_url;
+              const hasLabel = issue.labels.some(l => l.name === labelName);
+
+              console.log(`\n🔎 Checking issue #${issueNumber}: ${issue.title}`);
+              console.log(`↳ URL: ${issueURL}`);
+              console.log(`↳ Labels: ${issue.labels.map(l => l.name).join(", ") || "none"}`);
+
+              const timeline = await github.paginate(
+                github.rest.issues.listEventsForTimeline,
+                {
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  per_page: 100,
+                  mediaType: {
+                    previews: ["mockingbird"]
+                  }
+                }
+              );
+
+              console.log(`🧾 Timeline has ${timeline.length} events.`);
+              timeline.forEach((event, i) => {
+                const type = event.source?.type || "none";
+                const prURL = event.source?.issue?.html_url || "—";
+                console.log(` - ${i + 1}. event="${event.event}" type=${type} url=${prURL}`);
+              });
+
+              const linkedOpenPRs = [];
+
+              for (const event of timeline) {
+                const pr = event.source?.issue;
+                const prURL = pr?.html_url || "(unknown)";
+                const state = pr?.state || "(missing)";
+                const draft = pr?.draft ?? "(unknown)";
+                const isLikelyPR = prURL.includes("/pull/");
+
+                if (event.event === "cross-referenced" && isLikelyPR) {
+                  console.log(`🔗 Cross-ref PR: ${prURL} (state=${state}, draft=${draft})`);
+                  if (state === "open" && draft === false) {
+                    linkedOpenPRs.push(pr);
+                  }
+                }
+              }
+
+              if (linkedOpenPRs.length > 0 && !hasLabel) {
+                console.log(`✅ Adding "${labelName}" to issue #${issueNumber}`);
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  labels: [labelName]
+                });
+              } else if (linkedOpenPRs.length === 0 && hasLabel) {
+                console.log(`🗑️ Removing "${labelName}" from issue #${issueNumber}`);
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    name: labelName
+                  });
+                } catch (err) {
+                  if (err.status === 404) {
+                    console.log(`⚠️ Label already gone from #${issueNumber}`);
+                  } else {
+                    throw err;
+                  }
+                }
+              } else {
+                console.log(`🔸 No label change needed for issue #${issueNumber}`);
+              }
+            }
+
+            console.log(`🎉 Sync complete.`);
+
