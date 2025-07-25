@@ -7,3 +7,7 @@ contact_links:
   - name: Question
     url: "https://discord.gg/PtDdRtYZrx"
     about: "Alternatively, ask on our discord"
+
+  - name: "Blank Issue"
+    path: blank.yml
+    description: "Start with a completely blank issue template"
