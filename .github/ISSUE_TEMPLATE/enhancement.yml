@@ -1,0 +1,31 @@
+name: "Goal-based Issue"
+description: "Define a goal, explain why, and outline steps to achieve it"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: "Goal"
+      description: "What do you want to accomplish?"
+      placeholder: "e.g. Add a system to automatically notify users of updates"
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: "Why?"
+      description: "Why is this goal important or needed?"
+      placeholder: "e.g. Keeps users informed without manual updates"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to achieve? (if known)"
+      description: "Optional: Outline steps or ideas for how to accomplish the goal"
+      placeholder: "- Step 1\n- Step 2\n- Step 3"
+    validations:
+      required: false
+

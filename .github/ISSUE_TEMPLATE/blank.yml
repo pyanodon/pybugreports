@@ -1,0 +1,12 @@
+name: "Blank Issue"
+description: "Start with a completely blank issue template"
+labels: []
+body:
+  - type: textarea
+    id: freeform
+    attributes:
+      label: Describe your issue
+      description: Feel free to write anything here — no structure, just your thoughts.
+      placeholder: Write your issue here...
+    validations:
+      required: false
