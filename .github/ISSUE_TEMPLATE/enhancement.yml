@@ -1,5 +1,5 @@
-name: "Goal-based Issue"
-description: "Define a goal, explain why, and outline steps to achieve it"
+name: "Enhancement"
+description: "Define an enhancement, explain why, and outline steps to achieve it"
 labels: ["enhancement"]
 body:
   - type: textarea
