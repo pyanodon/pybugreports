@@ -1,4 +1,5 @@
 # Items
+*As of version 3.0.36*<br>
 ```lua
 ---@class data.ItemPrototype
 ---@field public add_flag fun(self: data.ItemPrototype, flag: string): data.ItemPrototype

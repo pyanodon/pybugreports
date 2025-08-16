@@ -11,3 +11,4 @@
     - [Tile](./internal_apis/pypostprocessing/tile.md)
 - [Special APIs](./special_apis/README.md)
   - [Digosaurs](./special_apis/digosaurs.md)
+  - [Compound Entities](./special_apis/compound_entities.md)

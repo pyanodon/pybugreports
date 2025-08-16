@@ -1,4 +1,5 @@
 # Entity
+*As of version 3.0.36*<br>
 ```lua
 ---@class data.EntityPrototype
 ---@field public standardize fun(self: data.EntityPrototype): data.EntityPrototype

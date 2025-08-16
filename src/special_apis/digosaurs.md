@@ -1,4 +1,5 @@
 # Digosaurs
+*As of version 3.0.36*<br>
 
 You can add a new digosaur like this:
 ```lua
