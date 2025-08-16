@@ -1,4 +1,5 @@
 # Fluid
+*As of version 3.0.36*<br>
 `FLUID` can be used like so:
 ```lua
 FLUID{

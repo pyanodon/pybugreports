@@ -1,4 +1,5 @@
 # Recipe
+*As of version 3.0.36*<br>
 ```lua
 ---@class data.RecipePrototype
 ---@field public standardize fun(self: data.RecipePrototype): data.RecipePrototype
