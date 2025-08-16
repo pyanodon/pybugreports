@@ -9,6 +9,8 @@
     - [Recipe](./internal_apis/pypostprocessing/recipe.md)
     - [Technology](./internal_apis/pypostprocessing/technology.md)
     - [Tile](./internal_apis/pypostprocessing/tile.md)
+  - [PyStellarExpedition](./internal_apis/pystellarexpedition/README.md)
+    - [Rocket Modules](./internal_apis/pystellarexpedition/rocket-modules.md)
 - [Special APIs](./special_apis/README.md)
   - [Digosaurs](./special_apis/digosaurs.md)
   - [Compound Entities](./special_apis/compound_entities.md)
