@@ -1,0 +1,5 @@
+[book]
+authors = ["lambdalemon"]
+language = "en"
+src = "src"
+title = "pydocs"
