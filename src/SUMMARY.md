@@ -13,5 +13,5 @@
   - [PyStellarExpedition](./internal_apis/pystellarexpedition/README.md)
     - [Rocket Modules](./internal_apis/pystellarexpedition/rocket-modules.md)
   - [PyAlienLife](./internal_apis/pyalienlife/README.md)
-    - [Digosaurs](./special_apis/digosaurs.md)
-    - [T.U.R.D.](./special_apis/turd.md)
+    - [Digosaurs](./internal_apis/pyalienlife/digosaurs.md)
+    - [T.U.R.D.](./internal_apis/pyalienlife/turd.md)
