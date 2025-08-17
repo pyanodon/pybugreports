@@ -1,5 +1,5 @@
 # Compound Entities
-*As of version 3.0.36*<br>
+*As of August 16th, 2025*<br>
 
 Compound entities are entities made up of multiple entities. For example vatbrains are just assembling-machines with a beacon hidden inside them.
 
