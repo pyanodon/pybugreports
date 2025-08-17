@@ -1,4 +1,5 @@
 # Contributor Guide
+*As of August 16th, 2025*<br>
 
 ### How to commit
 
