@@ -1,5 +1,5 @@
 # T.U.R.D.
-*As of August 16th, 2025*
+*As of August 17th, 2025*
 
 ```lua
 remote.add_interface("pywiki_turd_page", {
@@ -8,6 +8,7 @@ remote.add_interface("pywiki_turd_page", {
     reapply_turd_bonuses = reapply_turd_bonuses,
     new_turd = new_turd,
     on_turd_built = on_turd_built
+	get_machine_replacement = get_machine_replacement
 })
 ```
 
@@ -26,6 +27,15 @@ local fake_event = {
 
 remote.call("pywiki_turd_page", "new_turd", fake_event)
 end
+```
+
+## get_machine_replacement
+This function returns any applied machine replacement turds for the given entity
+
+```lua
+---@param force_index integer the force requesting this information
+---@param entity_name string the entity get the replacement for
+---@return string? replacement_entity the name of the entity that replaces the given entity
 ```
 
 ## List of all TURD Techs and Subtechs
