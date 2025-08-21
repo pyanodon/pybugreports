@@ -75,11 +75,12 @@ In control stage we then register a few events to detect when things are placed 
 -- 
 -- @param additional AdditionalParams
 -- @class AdditionalParams
--- @param enable_gui bool Enables an entry in the gui of the parent
--- @param gui_title string The title of the parent gui
--- @param gui_function_name string The name of the register compound function that handles adding the button to the gui
--- @param gui_submenu_function string The fuction called when you hit the button itself
--- @param gui_caption string The text the button has
+-- @field enable_gui bool Enables an entry in the gui of the parent
+-- @field gui_title string The title of the parent gui
+-- @field gui_function_name string The name of the register compound function that handles adding the button to the gui
+-- @field gui_submenu_function string The fuction called when you hit the button itself
+-- @field gui_caption string The text the button has
+-- @field position_offset MapPosition https://lua-api.factorio.com/2.0.64/concepts/MapPosition.html
 --
 -- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html 
 function py.compound_attach_entity_to(parent, child, additional)
@@ -88,6 +89,7 @@ end
 ```
 
 ## Control
+### Register Compound Function
 ```lua
 -- Registers a new compound function
 -- @param name string Name of the function
@@ -115,6 +117,7 @@ function py.register_compound_function(name, func)
 end
 ```
 
+### Get Compound Function Name
 ```lua
 -- Gets a registered compound_function from a name
 -- @param name string The name of the function
@@ -123,6 +126,7 @@ function py.get_compound_function(name)
 end
 ```
 
+### Get Compound Entity Children
 ```lua
 -- Gets the compound entity's children from it's unit_number
 -- @param unit_number number Unit number of the parent
@@ -131,6 +135,7 @@ function py.get_compound_entity_children(unit_number)
 end
 ```
 
+### Get Compound Entity Parent
 ```lua
 -- Gets the compound_entity parent from a child's unit_number
 -- @param unit_number number Unit number of a child
@@ -139,9 +144,37 @@ function py.get_compound_entity_parent(unit_number)
 end
 ```
 
+### Register Compound Entities
 ```lua
 -- Register all compound_entities and create their events
 function py.register_compound_entities()
     -- ...
 end
+```
+
+#### Compound Attach Entity To
+```lua
+-- Adds a new child to a compound entity
+-- Unsure about using this on non compound register parents, beware...
+-- 
+-- @param parent LuaEntity the parent compound entity
+-- @param child string Name of the child
+-- @param info Info
+--
+-- @class Info
+-- @field enable_gui bool Not sure if it works but it's the same as the normal enable_gui property
+-- @field possition_offset MapPosition https://lua-api.factorio.com/2.0.64/concepts/MapPosition.html
+function py.compound_attach_entity_to(parent, child_name, info)
+    -- ...
+end
+```
+
+#### Delete Attached Entity by Filter Function
+```lua
+-- Deletes children from a parent by a filter function
+-- Do not worry about validity it is checked internally
+--
+-- @param parent_unit_number number Unit number of the parent
+-- @param filter_func fun(child: LuaEntity): bool Return true if delete
+function py.delete_attached_entities_by_filter(parent_unit_number, filter_func)
 ```
