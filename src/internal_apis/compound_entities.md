@@ -1,5 +1,5 @@
 # Compound Entities
-*As of August 16th, 2025*<br>
+*As of August 21st, 2025*<br>
 
 Compound entities are entities made up of multiple entities. For example vatbrains are just assembling-machines with a beacon hidden inside them.
 
@@ -32,24 +32,24 @@ Wait but what about that empty table at the end?
 The `compound_attach_entity_to` function has a lot of options currently. Here's an exhaustive list:
 ```lua
 -- Enable GUI to open the children
--- @function enable_gui bool
+-- enable_gui bool
 
 -- Sets the title for the GUI based of a custom function
--- @function gui_title fun(entity: LuaEntity): string
+-- gui_title fun(entity: LuaEntity): string
 
 -- Sets a caption for the Button of the GUI
--- @function gui_caption string
+-- gui_caption string
 
 -- Sets a custom function for the gui when it's being opened
--- @function gui_function_name fun(event: events.on_gui_opened, player: LuaEntity, gui_root: LuaGuiElement, current_index: number, gui_child: LuaGuiElement)
--- @param event events.on_gui_opened Event data of when on_gui_opened is called
--- @param player LuaEntity the player who opened the GUI
--- @param gui_root LuaGuiElement The root of the preset GUI that you can add to
--- @param current_index number The index of the compound-entity child you are
--- @param gui_child LuaGuiElement The Button you are in the the gui_root
+-- gui_function_name fun(event: events.on_gui_opened, player: LuaEntity, gui_root: LuaGuiElement, current_index: number, gui_child: LuaGuiElement)
+-- @tparam event events.on_gui_opened Event data of when on_gui_opened is called
+-- @tparam player LuaEntity the player who opened the GUI
+-- @tparam gui_root LuaGuiElement The root of the preset GUI that you can add to
+-- @tparam current_index number The index of the compound-entity child you are
+-- @tparam gui_child LuaGuiElement The Button you are in the the gui_root
 
 -- Sets a custom function to run when you press the submenu button
--- @function gui_submenu_function_name fun(entity: LuaEntity): (LuaGuiElement | LuaEntity)
+-- gui_submenu_function_name fun(entity: LuaEntity): (LuaGuiElement | LuaEntity)
 ```
 
 ### Example
@@ -61,3 +61,87 @@ py.compound_attach_entity_to("jaw-crusher", "beacon", {
 ```
 This is what this looks like:
 ![Image](../images/compound_entities_1.png)
+
+# API Specification
+How this works internally is that compound entity attachments get attached in data stage then smuggled using `mod_data` over to control stage.
+
+In control stage we then register a few events to detect when things are placed or picked up and other functions.
+
+## Data
+```lua
+-- Attachs an entity to another entity with additional properties
+-- @param parent string
+-- @param child string
+-- 
+-- @param additional AdditionalParams
+-- @class AdditionalParams
+-- @param enable_gui bool Enables an entry in the gui of the parent
+-- @param gui_title string The title of the parent gui
+-- @param gui_function_name string The name of the register compound function that handles adding the button to the gui
+-- @param gui_submenu_function string The fuction called when you hit the button itself
+-- @param gui_caption string The text the button has
+--
+-- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html 
+function py.compound_attach_entity_to(parent, child, additional)
+    -- ...
+end
+```
+
+## Control
+```lua
+-- Registers a new compound function
+-- @param name string Name of the function
+-- @param func (GuiTitleFunction|GuiFunction|GuiSubmenuFunction)
+--
+-- @function GuiTitleFunction
+-- @param entity LuaEntity parent entity
+-- @return string Title
+-- 
+-- @function GuiFunction
+-- @param event events.on_gui_opened Event data of when on_gui_opened is called
+-- @param player LuaEntity the player who opened the GUI
+-- @param gui_root LuaGuiElement The root of the preset GUI that you can add to
+-- @param current_index number The index of the compound-entity child you are
+-- @param gui_child LuaGuiElement The Button you are in the the gui_root
+-- @return nil
+--
+-- @function GuiSubmenuFunction
+-- @param entity Parent entity
+-- @return (LuaGuiElement|LuaEntity) Anything that can be put in `player.opened`
+-- 
+-- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html 
+function py.register_compound_function(name, func)
+    -- ...
+end
+```
+
+```lua
+-- Gets a registered compound_function from a name
+-- @param name string The name of the function
+function py.get_compound_function(name)
+    -- ...
+end
+```
+
+```lua
+-- Gets the compound entity's children from it's unit_number
+-- @param unit_number number Unit number of the parent
+function py.get_compound_entity_children(unit_number)
+    -- ...
+end
+```
+
+```lua
+-- Gets the compound_entity parent from a child's unit_number
+-- @param unit_number number Unit number of a child
+function py.get_compound_entity_parent(unit_number)
+    -- ...
+end
+```
+
+```lua
+-- Register all compound_entities and create their events
+function py.register_compound_entities()
+    -- ...
+end
+```
