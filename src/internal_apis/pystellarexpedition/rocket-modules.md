@@ -21,7 +21,7 @@ Then we can create our equipments with custom definition and with some prefilled
 --- @field categories string[] The categories of the equipment
 --- @field category string The recipe category
 --- @field ingredients table|nil
---- @field results talbe|nil
+--- @field results table|nil
 local function create_equipment(definition)
   -- ...
 end

@@ -27,31 +27,6 @@ That's it, you have an assembling machine with a beacon now.
 
 Wait but what about that empty table at the end?
 
-### Options
-
-The `compound_attach_entity_to` function has a lot of options currently. Here's an exhaustive list:
-```lua
--- Enable GUI to open the children
--- enable_gui bool
-
--- Sets the title for the GUI based of a custom function
--- gui_title fun(entity: LuaEntity): string
-
--- Sets a caption for the Button of the GUI
--- gui_caption string
-
--- Sets a custom function for the gui when it's being opened
--- gui_function_name fun(event: events.on_gui_opened, player: LuaEntity, gui_root: LuaGuiElement, current_index: number, gui_child: LuaGuiElement)
--- @tparam event events.on_gui_opened Event data of when on_gui_opened is called
--- @tparam player LuaEntity the player who opened the GUI
--- @tparam gui_root LuaGuiElement The root of the preset GUI that you can add to
--- @tparam current_index number The index of the compound-entity child you are
--- @tparam gui_child LuaGuiElement The Button you are in the the gui_root
-
--- Sets a custom function to run when you press the submenu button
--- gui_submenu_function_name fun(entity: LuaEntity): (LuaGuiElement | LuaEntity)
-```
-
 ### Example
 
 ```lua
@@ -81,6 +56,7 @@ In control stage we then register a few events to detect when things are placed 
 -- @field gui_submenu_function string The fuction called when you hit the button itself
 -- @field gui_caption string The text the button has
 -- @field position_offset MapPosition https://lua-api.factorio.com/2.0.64/concepts/MapPosition.html
+-- @field on_built string Name of compound_entity function to run when the entity is built
 --
 -- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html 
 function py.compound_attach_entity_to(parent, child, additional)
@@ -93,12 +69,12 @@ end
 ```lua
 -- Registers a new compound function
 -- @param name string Name of the function
--- @param func (GuiTitleFunction|GuiFunction|GuiSubmenuFunction)
+-- @param func (GuiTitleFunction|GuiFunction|GuiSubmenuFunction|OnChildBuiltFunction)
 --
 -- @function GuiTitleFunction
 -- @param entity LuaEntity parent entity
 -- @return string Title
--- 
+--
 -- @function GuiFunction
 -- @param event events.on_gui_opened Event data of when on_gui_opened is called
 -- @param player LuaEntity the player who opened the GUI
@@ -110,8 +86,12 @@ end
 -- @function GuiSubmenuFunction
 -- @param entity Parent entity
 -- @return (LuaGuiElement|LuaEntity) Anything that can be put in `player.opened`
--- 
--- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html 
+--
+-- @function OnChildBuiltFunction
+-- @param child LuaEntity the child entity
+-- @return nil
+--
+-- @see https://pyanodon.github.io/pybugreports/internal_apis/compound_entities.html
 function py.register_compound_function(name, func)
     -- ...
 end
@@ -164,6 +144,7 @@ end
 -- @class Info
 -- @field enable_gui bool Not sure if it works but it's the same as the normal enable_gui property
 -- @field possition_offset MapPosition https://lua-api.factorio.com/2.0.64/concepts/MapPosition.html
+-- @field on_built string Name of compound_entity function to run when the entity is built
 function py.compound_attach_entity_to(parent, child_name, info)
     -- ...
 end
