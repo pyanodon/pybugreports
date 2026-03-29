@@ -1,5 +1,5 @@
 # Contributor Guide
-*As of August 16th, 2025*<br>
+*As of March 29th, 2026*<br>
 
 ### How to commit
 
@@ -15,6 +15,18 @@ How can I contribute?
   5. Wait for approval
   6. Make changes if needed
   7. Boom dopamine
+
+### Reporting Recipe Balance Feedback
+
+Recipe balance reports should go in the [recipe balance megathread](https://github.com/pyanodon/pybugreports/issues/696).
+
+Keep reports concise and include:
+
+- The internal name of the recipe or TURD path. In game, hover the recipe and press `Ctrl+Shift+F`.
+- Why you think it is underpowered, overpowered, or redundant compared to its alternatives.
+- A concrete suggestion for how to improve it.
+
+If the report needs a long explanation, open a dedicated bug ticket instead of writing an essay in the megathread.
 
 ### The pY Contributor Feng Shui
 
