@@ -1,6 +1,7 @@
 # Summary
 
 - [Contributor Guide](./contributor-guide.md)
+- [Balance Feedback](./balance-feedback.md)
 - [Internal APIs](./internal_apis/README.md)
   - [PyPostProcessing Data Stage](./internal_apis/pypostprocessing/data_stage.md)
     - [Item](./internal_apis/pypostprocessing/item.md)
