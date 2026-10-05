@@ -30,19 +30,6 @@ body:
         - Other
     validations:
         required: true
-  - type: dropdown
-    attributes:
-      label: Operating system
-      description: Which operating system are you running the game on?
-      multiple: false
-      options:
-        - ">=Windows 10"
-        - ">=Windows 10 w/ case sensitive filesystem enabled"
-        - < Windows 10
-        - MacOS
-        - GNU/Linux
-    validations:
-        required: true
   - type: checkboxes
     id: issuetype
     attributes:
